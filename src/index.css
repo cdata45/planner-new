@@ -1,0 +1,178 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Vazirmatn", ui-sans-serif, system-ui, sans-serif;
+
+  --color-bg-primary: #0f0f13;
+  --color-bg-secondary: #1a1a22;
+  --color-bg-card: #22222e;
+  --color-bg-elevated: #2c2c3a;
+  --color-bg-hover: #353545;
+
+  --color-accent-primary: #7c6af7;
+  --color-accent-primary-soft: #7c6af71a;
+  --color-accent-gold: #f0b429;
+  --color-accent-teal: #38b2ac;
+  --color-accent-rose: #f06292;
+
+  --color-text-primary: #f0eff5;
+  --color-text-secondary: #8b8a9b;
+  --color-text-muted: #55546a;
+
+  --color-danger: #fc5c65;
+  --color-success: #26de81;
+  --color-warning: #fed330;
+
+  --color-border: #2a2a38;
+}
+
+html,
+body {
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: "Vazirmatn", ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-height: 100vh;
+  /* subtle gradient backdrop */
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(124, 106, 247, 0.12), transparent 60%),
+    radial-gradient(900px 500px at -10% 30%, rgba(56, 178, 172, 0.08), transparent 60%),
+    var(--color-bg-primary);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-bg-elevated);
+  border-radius: 999px;
+}
+
+/* Hide number input arrows */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Focus rings */
+*:focus {
+  outline: none;
+}
+button,
+input,
+textarea {
+  font-family: inherit;
+}
+
+/* Custom animations */
+@keyframes pop {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(124, 106, 247, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(124, 106, 247, 0);
+  }
+}
+
+.animate-pop {
+  animation: pop 320ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+.animate-fade-up {
+  animation: fade-up 320ms ease-out both;
+}
+.animate-slide-up {
+  animation: slide-up 320ms cubic-bezier(0.32, 0.72, 0, 1) both;
+}
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Persian digits class */
+.tabular-fa {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Card style helper */
+.card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+}
+
+/* Glass card */
+.glass {
+  background: linear-gradient(180deg, rgba(44, 44, 58, 0.6), rgba(34, 34, 46, 0.6));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* Native checkbox replaced - hide */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Selection */
+::selection {
+  background: rgba(124, 106, 247, 0.35);
+  color: #fff;
+}

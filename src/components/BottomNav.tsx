@@ -29,42 +29,47 @@ export function BottomNav({
   onChange: (p: Page) => void;
 }) {
   return (
-    <nav
-      className="fixed bottom-0 inset-x-0 z-40 glass border-t border-[var(--color-border)]"
-      style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
-    >
-      <div className="mx-auto max-w-xl flex items-stretch justify-around px-2 py-2">
-        {items.map(({ key, label, Icon }) => {
-          const isActive = active === key;
-          return (
-            <button
-              key={key}
-              onClick={() => onChange(key)}
-              className="relative flex-1 min-w-[48px] min-h-[56px] flex flex-col items-center justify-center gap-1 rounded-2xl transition-all duration-200"
-            >
-              {isActive && (
-                <span className="absolute inset-x-3 top-1 h-0.5 rounded-full bg-[var(--color-accent-primary)]" />
-              )}
-              <Icon
-                className={`w-6 h-6 transition-all duration-200 ${
-                  isActive
-                    ? "text-[var(--color-accent-primary)] -translate-y-0.5 scale-110"
-                    : "text-[var(--color-text-secondary)]"
-                }`}
-              />
-              <span
-                className={`text-[11px] font-medium transition-colors ${
-                  isActive
-                    ? "text-[var(--color-text-primary)]"
-                    : "text-[var(--color-text-muted)]"
-                }`}
+    <>
+      {/* فاصله برای اینکه محتوا پشت ناو نره */}
+      <div className="h-20" />
+
+      <nav
+        className="fixed bottom-0 inset-x-0 z-50 bg-gray-900/90 backdrop-blur-lg border-t border-gray-700"
+        style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
+      >
+        <div className="mx-auto max-w-xl flex items-stretch justify-around px-2 py-3">
+          {items.map(({ key, label, Icon }) => {
+            const isActive = active === key;
+            return (
+              <button
+                key={key}
+                onClick={() => onChange(key)}
+                className="relative flex-1 min-w-[48px] min-h-[56px] flex flex-col items-center justify-center gap-1 rounded-2xl transition-all duration-200"
               >
-                {label}
-              </span>
-            </button>
-          );
-        })}
-      </div>
-    </nav>
+                {isActive && (
+                  <span className="absolute inset-x-3 top-0 h-0.5 rounded-full bg-blue-500" />
+                )}
+                <Icon
+                  className={`w-6 h-6 transition-all duration-200 ${
+                    isActive
+                      ? "text-blue-500 -translate-y-0.5 scale-110"
+                      : "text-gray-400"
+                  }`}
+                />
+                <span
+                  className={`text-[11px] font-medium transition-colors ${
+                    isActive
+                      ? "text-white"
+                      : "text-gray-400"
+                  }`}
+                >
+                  {label}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </nav>
+    </>
   );
 }
